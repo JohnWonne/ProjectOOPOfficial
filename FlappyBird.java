@@ -14,19 +14,36 @@ public class FlappyBird implements ActionListener, KeyListener {
     private ArrayList<Rectangle> rects;
     private int time, scroll;
     private Timer t;
+    private int currentScreenIndex = 0;
+    public int score = 0;
     private boolean paused;
 
-    public void move() {
+    private boolean select1;
+    private boolean select2;
+    
+    private boolean showingDifficutyScreen;
+    private boolean startthegame;
+    private boolean showingInstructions1;
+    private boolean showingInstructions2;
+    private boolean showingInstructions3;
+    private boolean showingResult1;
+    private boolean showingResult2;
+    private boolean showingResuls3;
+    
+    public void go() {
         frame = new JFrame("Flappy Bird");
         panel = new GamePanel(this, bird, rects);
         bird = new Bird();
         rects = new ArrayList<Rectangle>();
+        
         frame.add(panel);
-        frame.setSize(WIDTHM, HEIGHT);
+        frame.setSize(WIDTH, HEIGHT);
         frame.setVisible(true);
         frame.setVisible(true);
         frame.addKeyListener(this);
+        
         paused = true;
+        
         t = new Timer(1000/FPS, this);
         t.start();
     }

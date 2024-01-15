@@ -38,7 +38,7 @@ public class FlappyBird implements ActionListener, KeyListener {
         
         frame.add(panel);
         frame.setSize(WIDTH, HEIGHT);
-        frame.setVisible(true);
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         frame.addKeyListener(this);
         

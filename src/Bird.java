@@ -35,8 +35,17 @@ public class Bird {
     public Bird() {
         x = FlappyBird.WIDTH / 4;
         y = FlappyBird.HEIGHT / 3;
+        width = 2 * RAD;
+        height = 2 * RAD;
+        String[] colors = {"red", "blue", "green"};
+        String color = (String) JOptionPane.showInputDialog(null, "Choose a color for the bird:", "Color Selection", JOptionPane.QUESTION_MESSAGE, null, colors, colors[0]);
         try {
-            img = ImageIO.read(new File("flappybird.png"));
+        	if (color.equals("red")) {
+                img = ImageIO.read(new File("flappybirdred.png"));
+            } else if (color.equals("blue")) {
+                img = ImageIO.read(new File("flappybirdblue.png"));
+            } else if (color.equals("green")) {
+                img = ImageIO.read(new File("flappybirdgreen.png"));}
         } catch (IOException e) {
             e.printStackTrace();
         }

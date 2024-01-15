@@ -159,5 +159,102 @@ public class FlappyBird implements ActionListener, KeyListener {
     public int getScore() {
         return time;
     }
+    public void keyPressed(KeyEvent e) {
+    	if (e.getKeyCode() == KeyEvent.VK_UP && select1 && (!showingResult1 && !showingResult2 && !showingResult3) ) {
+    		bird.jump();
+    	} else if (e.getKeyCode() == KeyEvent.VK_UP && select2 && (!showingResult1 && !showingResult2 && !showingResult3) ) {
+    		bird.jump();
+    	} 
+    	if (e.getKeyCode() == KeyEvent.VK_SPACE ) {
+    	showingDifficultyScreen = true;
+    	showingInstructions1 = false;
+    	showingInstructions2 = false;
+    	showingInstructions3 = false;
+    	}
+    	if (e.getKeyCode() == KeyEvent.VK_A && showingDifficultyScreen ) {
+        showingDifficultyScreen = false;
+        time=0;
+        paused = false;
+        select1 = true;
+        select2 = false;
+    	}
+        if (e.getKeyCode() == KeyEvent.VK_S && showingDifficultyScreen) {
+        showingDifficultyScreen = false;
+        time=0;
+        paused = false;
+        select1 = false;
+        select2 = true;
+        
+        }
+    	if (e.getKeyCode() == KeyEvent.VK_SPACE && (showingResult1 || showingResult2 || showingResult3) ) {
+        paused = true;
+        showingDifficultyScreen = false;
+		showingInstructions1 = false;
+	    showingInstructions2 = false;
+	    showingInstructions3 = false;
+	    showingResult1 = false;
+        showingResult2 = false;
+        showingResult3 = false;
+        select1 = false;
+        select2 = false;
+        }
+    	if (e.getKeyCode() == KeyEvent.VK_Z && paused && !showingInstructions3 && !showingInstructions2 && !showingInstructions1 && !showingDifficultyScreen) {
+        showingInstructions1 = true;
+        } else if (e.getKeyCode() == KeyEvent.VK_Z && paused && showingInstructions1) {
+        showingInstructions1 = false;
+        showingInstructions2 = true;
+        } else if (e.getKeyCode() == KeyEvent.VK_Z && paused && showingInstructions2) {
+        showingInstructions2 = false;
+        showingInstructions3 = true;
+        } else if (e.getKeyCode() == KeyEvent.VK_Z && paused && showingInstructions3) {
+        showingInstructions3 = false;
+        showingInstructions1 = true;
+        }
+    }
     
+   public void keyReleased(KeyEvent e) {
+
+   }
+   public void keyTyped(KeyEvent e) {
+
+   }
+   public boolean showingResult1() {
+	   return showingResult1;
+   }
+   public boolean showingResult2() {
+	   return showingResult2;
+   }
+   public boolean showingResult3() {
+	   return showingResult3;
+   }
+   public boolean showingInstructions1() {
+	   return showingInstructions1;
+   }
+   public boolean showingInstructions2() {
+	   return showingInstructions2;
+   }
+   public boolean showingInstructions3() {
+	   return showingInstructions3;
+   }
+
+   public int getCurrentScreenIndex() {
+	   	return currentScreenIndex;
+   }
+   public boolean paused() {
+	   	return paused;
+   }
+   public boolean select1() {
+	   	return select1;
+  }
+   public boolean select2() {
+	   	return select2;
+  }
+
+   public boolean startthegame() {
+	   return startthegame;
+   }
+   public boolean showingDifficultyScreen() {
+   return showingDifficultyScreen;
+   }
+}    
     

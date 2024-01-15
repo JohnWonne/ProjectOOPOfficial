@@ -182,7 +182,7 @@ public class FlappyBird implements ActionListener, KeyListener {
         select1 = true;
         select2 = false;
     	}
-        if (e.getKeyCode() == KeyEvent.VK_S && showingDifficultyScreen) {
+        if (e.getKeyCode() == KeyEvent.VK_B && showingDifficultyScreen) {
         showingDifficultyScreen = false;
         time=0;
         paused = false;

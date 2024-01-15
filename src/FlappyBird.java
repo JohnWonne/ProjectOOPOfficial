@@ -28,7 +28,7 @@ public class FlappyBird implements ActionListener, KeyListener {
     private boolean showingInstructions3;
     private boolean showingResult1;
     private boolean showingResult2;
-    private boolean showingResuls3;
+    private boolean showingResult3;
     
     public void go() {
         frame = new JFrame("Flappy Bird");
@@ -54,11 +54,11 @@ public class FlappyBird implements ActionListener, KeyListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         panel.repaint();
-        if(!paused) {
+        if(select1 && (!showingResult1 && !showingResult2 && !showingResult3)) { //easy mode
             bird.physics();
             if(scroll % 90 == 0) {
-                Rectangle r = new Rectangle(WIDTH, 0, GamePanel.PIPE_W, (int) ((Math.random()*HEIGHT)/5f + (0.2f)*HEIGHT));
-                int h2 = (int) ((Math.random()*HEIGHT)/5f + (0.2f)*HEIGHT);
+                Rectangle r = new Rectangle(WIDTH, 0, GamePanel.PIPE_W, (int) ((Math.random()*HEIGHT)/6f + (0.2f)*HEIGHT));
+                int h2 = (int) ((Math.random()*HEIGHT)/6f + (0.2f)*HEIGHT);
                 Rectangle r2 = new Rectangle(WIDTH, HEIGHT - h2, GamePanel.PIPE_W, h2);
                 rects.add(r);
                 rects.add(r2);
@@ -70,8 +70,12 @@ public class FlappyBird implements ActionListener, KeyListener {
                 if(r.x + r.width <= 0) {
                     toRemove.add(r);
                 }
-                if(r.contains(bird.x, bird.y)) {
-                    JOptionPane.showMessageDialog(frame, "You lose!\n"+"Your score was: "+time+".");
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               																																																																								
+                if (r.intersects(Math.round(bird.x - (bird.getWidth() / 2)), Math.round(bird.y - (bird.getHeight() / 2)), bird.getWidth(), bird.getHeight())) {                	bird.playHitSound();
+                	bird.playHitSound();
+                    showingResult1 = true;
+                    showingResult2 = false;
+                    showingResult3 = false;
                     game = false;
                 }
             }
